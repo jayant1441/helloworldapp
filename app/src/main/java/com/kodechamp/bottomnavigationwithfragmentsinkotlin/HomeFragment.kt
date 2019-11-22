@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
             var intent  = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id=com.team.helloworld")
+            intent.type = "text/plain"
             startActivity(Intent.createChooser(intent , "Share to"))
         }
 
