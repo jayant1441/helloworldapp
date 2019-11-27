@@ -4,6 +4,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import com.kodechamp.bottomnavigationwithfragmentsinkotlin.Fragments.CartFragment
+import com.kodechamp.bottomnavigationwithfragmentsinkotlin.Fragments.HomeFragment
+import com.kodechamp.bottomnavigationwithfragmentsinkotlin.Fragments.ProfileFragment
+import com.kodechamp.bottomnavigationwithfragmentsinkotlin.Fragments.TriviaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

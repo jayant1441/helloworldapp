@@ -1,12 +1,10 @@
-package com.kodechamp.bottomnavigationwithfragmentsinkotlin
+package com.kodechamp.bottomnavigationwithfragmentsinkotlin.webview
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import kotlinx.android.synthetic.main.activity_webview.*
+import com.kodechamp.bottomnavigationwithfragmentsinkotlin.R
 import kotlinx.android.synthetic.main.activity_webview_two.*
 
 class webview_two : AppCompatActivity() {
