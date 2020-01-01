@@ -2,65 +2,96 @@ package com.kodechamp.bottomnavigationwithfragmentsinkotlin.Fragments
 
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearSnapHelper
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SnapHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import android.widget.ImageView
+import android.widget.Toast
 import com.kodechamp.bottomnavigationwithfragmentsinkotlin.*
-import com.kodechamp.bottomnavigationwithfragmentsinkotlin.webview.webview_four
-import com.kodechamp.bottomnavigationwithfragmentsinkotlin.webview.webview_one
-import com.kodechamp.bottomnavigationwithfragmentsinkotlin.webview.webview_three
-import com.kodechamp.bottomnavigationwithfragmentsinkotlin.webview.webview_two
-
 import kotlinx.android.synthetic.main.fragment_home.view.*
-
-
 
 
 class HomeFragment : Fragment() {
 
+    var ListOfEvents = ArrayList<HomeEvents>()
+    var ListOfRecyclerVIew = ArrayList<RecyclerViewDataClass>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        ListOfEvents.add(HomeEvents("Events", R.drawable.event_graphic))
+        ListOfEvents.add(HomeEvents("About us", R.drawable.about_graphic))
+        ListOfEvents.add(HomeEvents("Contact us", R.drawable.contact_graphic))
+        ListOfEvents.add(HomeEvents("Visit Website", R.drawable.website_graphic))
+        ListOfEvents.add(HomeEvents("Share app", R.drawable.share_graphic))
+        ListOfEvents.add(HomeEvents("Feedback", R.drawable.feedback_graphic))
+        var adapter = MyEventAdapter(context!!, ListOfEvents)
+
+        ListOfRecyclerVIew.add(RecyclerViewDataClass(R.drawable.pngtree3,"Build Project with \nOther Student \nMentors"))
+        ListOfRecyclerVIew.add(RecyclerViewDataClass(R.drawable.pngtree2,"Get Invitation to \n various Tech \nEvents"))
+        ListOfRecyclerVIew.add(RecyclerViewDataClass(R.drawable.pngtree3,"Get in touch\n With HelloWorld mentors\n to Solve problem"))
+        ListOfRecyclerVIew.add(RecyclerViewDataClass(R.drawable.pngtree5,"Be a Part of\n Non-Profit\n Technical Club"))
+
+
+
         // Inflate the layout for this fragment
-
-
-        fun intentactivity(webview_name:Any){
-            val intent = Intent(context,webview_name::class.java)
-            startActivity(intent)
-        }
-
-
-
-
-
         var myView = inflater.inflate(R.layout.fragment_home, container, false)
-        var iv_events = myView.iv_events as ImageView
-        val iv_aboutus = myView.iv_aboutus as ImageView
-        val iv_gallery = myView.iv_gallery as ImageView
-        val iv_website = myView.iv_website as ImageView
-        val iv_share = myView.iv_share as ImageView
+        var facebook_contact = myView.facebook_contact as ImageView
+        var instagram_contact = myView.instagram_contact as ImageView
+        var whatsapp_contact = myView.whatsapp_contact as ImageView
+        var linkedin_contct = myView.linkedin_contact as ImageView
+        var gmail_contact = myView.gmail_contact as ImageView
+        var website_contact = myView.website_contact as ImageView
 
 
-        iv_events.setOnClickListener {
-           intentactivity(webview_one())
+        var gv_HomeEvent = myView.gv_HomeEvent as GridView
+        gv_HomeEvent.adapter = adapter
+
+
+
+        facebook_contact.setOnClickListener {
+            intent_to_website("https://www.facebook.com/helloworldteam/")
+            Toast.makeText(context,"Opening Facebook",Toast.LENGTH_SHORT).show()
         }
-        iv_aboutus.setOnClickListener {
-            intentactivity(webview_two())
+        instagram_contact.setOnClickListener {
+            intent_to_website("https://www.instagram.com/official_hello_world/")
+            Toast.makeText(context,"Opening Instagram",Toast.LENGTH_SHORT).show()
         }
-        iv_gallery.setOnClickListener {
-            intentactivity(webview_three())
+        whatsapp_contact.setOnClickListener {
+            intent_to_website("https://chat.whatsapp.com/BmAolfGm1Y55NoDfxPN2YY")
+            Toast.makeText(context,"Opening Whatsapp",Toast.LENGTH_SHORT).show()
         }
-        iv_website.setOnClickListener {
-            intentactivity(webview_four())
+        linkedin_contct.setOnClickListener {
+            intent_to_website("https://www.linkedin.com/company/helloworldofficial")
+            Toast.makeText(context,"Opening Contact Us",Toast.LENGTH_SHORT).show()
         }
-        iv_share.setOnClickListener {
-            var intent  = Intent()
-            intent.action = Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id=com.team.helloworld")
-            intent.type = "text/plain"
-            startActivity(Intent.createChooser(intent , "Share to"))
+        gmail_contact.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto:")
+            intent.putExtra(Intent.EXTRA_EMAIL, "contact@helloworldofficial.in")
+            intent.putExtra(Intent.EXTRA_SUBJECT,"Feedback")
+            startActivity(intent)
+            Toast.makeText(context,"Opening Gmail",Toast.LENGTH_SHORT).show()
         }
+        website_contact.setOnClickListener {
+            intent_to_website("https://helloworldofficial.in/")
+            Toast.makeText(context,"Opening Website",Toast.LENGTH_SHORT).show()
+        }
+
+
+        var rv = myView.recycler_view as RecyclerView
+        rv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        rv.adapter = MyRecyclerViewAdapter(context!!,ListOfRecyclerVIew)
+
+        var snapHelper:SnapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(rv)
 
 
 
@@ -68,5 +99,14 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
+
+    fun intent_to_website(website_name:String){
+        var intent = Intent(Intent.ACTION_VIEW, Uri.parse(website_name))
+        startActivity(intent)
+    }
 }
+
+
 

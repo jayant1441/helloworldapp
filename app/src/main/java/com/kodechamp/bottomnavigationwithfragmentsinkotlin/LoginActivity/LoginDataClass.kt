@@ -1,4 +1,4 @@
-package com.kodechamp.bottomnavigationwithfragmentsinkotlin
+package com.kodechamp.bottomnavigationwithfragmentsinkotlin.LoginActivity
 
 class LoginDataClass{
     var Email :String = ""

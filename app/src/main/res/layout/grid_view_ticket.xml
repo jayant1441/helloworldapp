@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70pt"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_grid_ticket"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/iv_ProjectIcon"
+            android:layout_width="50pt"
+            android:layout_height="40pt"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="7dp"
+            android:paddingStart="18dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="18dp"
+            android:src="@drawable/calendarimagepng295391" />
+
+        <TextView
+            android:id="@+id/tv_ProjectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+
+            android:text="Calender"
+            android:textColor="@color/black"
+
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>

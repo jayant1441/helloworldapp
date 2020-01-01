@@ -11,17 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login"
+        <activity android:name=".LoginActivity.SignUp"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ProjectDescription" />
+        <activity
+            android:name=".developer"
+            android:theme="@style/AppDeveloper" />
+        <activity
+            android:name=".LoginActivity.login"
             android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity android:name=".webview.webview_four" />
-        <activity android:name=".webview.webview_three" />
-        <activity android:name=".webview.webview_two" />
-        <activity android:name=".webview.webview_one" />
-
-        <activity android:name=".MainActivity">
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".webview.webview_four"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".webview.webview_three"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".webview.webview_two"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".webview.webview_one"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".Welcome"
+            android:theme="@style/AppDeveloper">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

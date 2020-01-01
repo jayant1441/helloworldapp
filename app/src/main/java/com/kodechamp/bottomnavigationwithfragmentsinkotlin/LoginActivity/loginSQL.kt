@@ -1,10 +1,9 @@
-package com.kodechamp.bottomnavigationwithfragmentsinkotlin
+package com.kodechamp.bottomnavigationwithfragmentsinkotlin.LoginActivity
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
 
 val dbname = "helloworld_database"
 val tablename = "login_table"
@@ -15,10 +14,10 @@ val ColPassword = "Password"
 val dbversion = 1
 
 
-class loginSQL(var context: Context):SQLiteOpenHelper(context, dbname,null, dbversion ){
+class loginSQL(var context: Context):SQLiteOpenHelper(context, dbname,null, dbversion){
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        var create_table = "CREATE TABLE IF NOT EXISTS " +tablename+ "(" + ColEmail + " VARCHAER(256), " + ColPassword + " VARCHAR(256))"
+        var create_table = "CREATE TABLE IF NOT EXISTS " + tablename + "(" + ColEmail + " VARCHAER(256), " + ColPassword + " VARCHAR(256))"
         p0!!.execSQL(create_table)
     }
 
@@ -27,12 +26,12 @@ class loginSQL(var context: Context):SQLiteOpenHelper(context, dbname,null, dbve
     }
 
 
-    fun add(user:LoginDataClass){
-        var db = this.writableDatabase
+    fun add(user: LoginDataClass){
+        var database = this.writableDatabase
         var cv = ContentValues()
         cv.put(ColEmail,user.Email)
         cv.put(ColPassword,user.Password)
-        db.insert(tablename,null,cv)
+        database.insert(tablename,null,cv)
 
 
     }
